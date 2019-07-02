@@ -11,6 +11,8 @@ class Page{
 	      private $tpl;
 	      private $options = [];
           private $defaults = [
+          	"header"=>true,//ele vai ter por padrão o header
+          	"footer"=>true,//asimm como o footer
           	"data" => [] //nossos dados vai estar nessa chave data
           ];
 
@@ -38,8 +40,8 @@ class Page{
 
       $this->setData($this->options["data"]);//diminuimos o codigo acima do foreach em uma linha só usando o metodo foreach do setData
 
-       //Desenhando nosso template
-       $this->tpl->draw("header");
+       //Desenhando nosso template, mas com uma validação pra adicionar o tamplete
+      if ($this->options["header"] === true) $this->tpl->draw("header");
 
 
 	}//fim do metodo magico construct
@@ -73,8 +75,8 @@ class Page{
 
 	public function __destruct(){
 
-     //após destruir da memória metodo acima mostra o footer
-		$this->tpl->draw("footer");
+     //após destruir da memória metodo acima mostra o footer, mas como uma validação
+		if($this->options["footer"] === true) $this->tpl->draw("footer");
 
 	}//fim do metodo magico destruct
 
