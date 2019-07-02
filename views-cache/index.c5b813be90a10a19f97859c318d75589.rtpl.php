@@ -64,7 +64,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="single-promo promo3">
                         <i class="fa fa-lock"></i>
-                        <p>Pagamento seguro sua compra protegida</p>
+                        <p>Pagamento seguro 100% blindado</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">

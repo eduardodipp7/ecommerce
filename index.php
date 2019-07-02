@@ -4,6 +4,7 @@ require_once("vendor/autoload.php");//é do composer responsavel por chamar as b
 
 use \Slim\Slim;
 use \Projeto\Page;
+use \Projeto\PageAdmin;
 
 $app = new Slim();//cria um objeto da classe Slim 
 
@@ -26,6 +27,19 @@ $app->get('/', function() { //pega a rota que eu estou chamando e executa a fun�
 	echo json_encode($results);*/
 
 });
+
+
+//CRIANDO NOVA ROTA PARA TEMPLATE ADMIN
+$app->get('/admin/', function() { 
+
+	
+	$page = new PageAdmin();
+
+	$page->setTpl("index");
+
+
+});
+
 
 
 //Nossa chamada para execução é a chave de inginição do carro, ele que executa tudo
