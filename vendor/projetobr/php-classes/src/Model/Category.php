@@ -28,6 +28,9 @@ class Category extends Model{
 		));
 
 		$this->setData($results[0]);
+
+		 //Chamada da função pra alteração do menu categories dinamico
+		Category::updateFile();
 	}
 
 	public function get($idcategory){
@@ -53,6 +56,34 @@ class Category extends Model{
 			':idcategory'=>$this->getidcategory()
 
 		]);
+        
+        //Chamada da função pra alteração do menu categories dinamico
+		Category::updateFile();
+	}
+
+	//Metodo de modificação para o menu categorias dinamico
+
+	public static function updateFile(){
+
+        //Traz todas as categorias que tem no banco de dados pelo metodo listAll
+		$categories = Category::listAll();
+
+		/*<li><a href="#">Categoria Um</a></li>
+         Repetir esse trecho dacima la no arquivo html de categories-menu
+		*/
+
+         $html = [];// array vazio, necessário para o array_push no primeiro parametro não emitir aviso que é necessário um array.
+
+         foreach ($categories as $row) {
+         	//adiciona elementos no final do array, primeiro parametro adiciona array de entrada, segundo paramentro valor a ser add no final do array
+         	array_push($html, '<li><a href="/categories/'.$row['idcategory'].'/">'.$row['descategory'].'</a></li>');
+         }
+
+         //Preciso gravar os dados no arquivo e salvar usando a função abaixo igualzito fopen, variavel html é um array precisa converter pra string usando implode pra gravar os dados no arquivo
+         file_put_contents($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "categories-menu.html", implode('', $html));
+
+
+         //Após isso fazer a chamada da função nas outras funções acima, save e delete que alteram as categorias
 	}
 
 

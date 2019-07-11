@@ -358,6 +358,26 @@ $app->post("/admin/categories/:idcategory/", function($idcategory){
 
 });
 
+//CRIANDO ROTA PRO MENU CATEGORIAS DO SITE
+$app->get("/categories/:idcategory/", function($idcategory){
+
+	$category = new Category();
+
+	$category->get((int)$idcategory);
+
+	//criando objeto da classe Page pra acessar as informaçoes
+	$page = new Page();//nessa hora ele vai chamar o metodo construct e colocar o header na tela
+
+	$page->setTpl("category", [
+     'category'=>$category->getValues(),
+     'products'=>[]
+
+	]);//adiciona aquele arquivo index.html que tem h1
+
+
+
+});
+
 
 
 //Nossa chamada para execução é a chave de inginição do carro, ele que executa tudo
