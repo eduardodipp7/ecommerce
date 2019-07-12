@@ -3,6 +3,7 @@
 use \Projeto\PageAdmin;
 use \Projeto\Model\User;
 use \Projeto\Model\Category;
+use \Projeto\Model\Product;
 
 //CRIANDO A ROTA PRA ACESSO A CATEGORIAS
 
@@ -93,22 +94,64 @@ $app->post("/admin/categories/:idcategory/", function($idcategory){
 
 });
 
-//CRIANDO ROTA PRO MENU CATEGORIAS DO SITE
-$app->get("/categories/:idcategory/", function($idcategory){
+
+
+$app->get("/admin/categories/:idcategory/products/", function($idcategory){
+
+	User::verifyLogin();
+
 
 	$category = new Category();
 
 	$category->get((int)$idcategory);
 
 	//criando objeto da classe Page pra acessar as informaçoes
-	$page = new Page();//nessa hora ele vai chamar o metodo construct e colocar o header na tela
+	$page = new PageAdmin();//nessa hora ele vai chamar o metodo construct e colocar o header na tela
 
-	$page->setTpl("category", [
+	$page->setTpl("categories-products", [
      'category'=>$category->getValues(),
-     'products'=>[]
+     'productsRelated'=>$category->getProducts(),
+     'productsNotRelated'=>$category->getProducts(false)
 
 	]);
 });
 
+$app->get("/admin/categories/:idcategory/products/:idproduct/add/", function($idcategory, $idproduct){
 
+	User::verifyLogin();
+
+
+	$category = new Category();
+
+	$category->get((int)$idcategory);
+
+	$product = new Product();
+
+	$product->get((int)$idproduct);
+
+	$category->addProduct($product);
+
+	header("Location: /admin/categories/".$idcategory."/products/");
+	exit;
+});
+
+
+$app->get("/admin/categories/:idcategory/products/:idproduct/remove/", function($idcategory, $idproduct){
+
+	User::verifyLogin();
+
+
+	$category = new Category();
+
+	$category->get((int)$idcategory);
+
+	$product = new Product();
+
+	$product->get((int)$idproduct);
+
+	$category->removeProduct($product);
+
+	header("Location: /admin/categories/".$idcategory."/products/");
+	exit;
+});
 ?>
