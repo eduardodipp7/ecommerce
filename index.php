@@ -9,6 +9,7 @@ $app = new Slim();//cria um objeto da classe Slim
 
 $app->config('debug', true);//mostra os erros detalhados 
 
+require_once("functions.php");
 require_once("site.php");
 require_once("admin.php");
 require_once("admin-users.php");

@@ -85,95 +85,23 @@
                     <div class="latest-product">
                         <h2 class="section-title">Produtos</h2>
                         <div class="product-carousel">
+                            <?php $counter1=-1;  if( isset($products) && ( is_array($products) || $products instanceof Traversable ) && sizeof($products) ) foreach( $products as $key1 => $value1 ){ $counter1++; ?>
                             <div class="single-product">
                                 <div class="product-f-image">
-                                    <img src="/res/site/img/product-1.jpg" alt="">
+                                    <img src="<?php echo htmlspecialchars( $value1["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="">
                                     <div class="product-hover">
                                         <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Comprar</a>
-                                        <a href="#" class="view-details-link"><i class="fa fa-link"></i>Detalhes</a>
+                                        <a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="view-details-link"><i class="fa fa-link"></i>Detalhes</a>
                                     </div>
                                 </div>
                                 
-                                <h2><a href="#">GARGANTILHA FIO VENEZIANO ROMMANEL</a></h2>
+                                <h2><a href="/products/<?php echo htmlspecialchars( $value1["desurl"], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["desproduct"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></h2>
                                 
                                 <div class="product-carousel-price">
-                                    <ins>$139.90</ins> <del>$200.00</del>
+                                    <ins>R$<?php echo formatPrice($value1["vlprice"]); ?></ins>
                                 </div> 
                             </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/res/site/img/product-2.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Comprar</a>
-                                        <a href="#" class="view-details-link"><i class="fa fa-link"></i>Detalhes</a>
-                                    </div>
-                                </div>
-                                
-                                <h2>BRINCO ARGOLA PEQUENA FECHADA FOLHEADA A OURO 18K</h2>
-                                <div class="product-carousel-price">
-                                    <ins>$26.00</ins> <del>$30.00</del>
-                                </div> 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/res/site/img/product-3.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Comprar</a>
-                                        <a href="#" class="view-details-link"><i class="fa fa-link"></i>Detalhes</a>
-                                    </div>
-                                </div>
-                                
-                                <h2>ANEL PRATEADO REGULÁVEL ESTILO BOHO COM PEDRA AZUL</h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$29.90</ins> <del>$35.00</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/res/site/img/product-4.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Comprar</a>
-                                        <a href="#" class="view-details-link"><i class="fa fa-link"></i>Detalhes</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a href="#">COLAR PRATEADO COM ZIRCÔNIA EM GOTA</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$49.00</ins> <del>$60.00</del>
-                                </div>                            
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/res/site/img/product-5.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Comprar</a>
-                                        <a href="#" class="view-details-link"><i class="fa fa-link"></i>Detalhes</a>
-                                    </div>
-                                </div>
-                                
-                                <h2>MAXI ANEL EM CRISTAL INCOLOR</h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$69.00</ins> <del>$85.00</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="/res/site/img/product-6.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Comprar</a>
-                                        <a href="#" class="view-details-link"><i class="fa fa-link"></i>Detalhes</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a href="#">Samsung gallaxy note 4</a></h2>
-
-                                <div class="product-carousel-price">
-                                    <ins>$28.00</ins>
-                                </div>                            
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

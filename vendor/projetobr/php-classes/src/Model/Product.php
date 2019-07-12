@@ -16,6 +16,21 @@ class Product extends Model{
 		return $sql->select("SELECT * FROM tb_products ORDER BY desproduct");
 	}
 
+	public static function checklist($list){
+              
+              //Verifica no getValues se a foto existe ou não pra se inserida no site 
+              foreach ($list as &$row) {
+              	
+              	$p = new Product();
+              	$p->setData($row);
+              	$row = $p->getValues();
+              }
+               
+               //Retorna cada produto já formatado
+              return $list;
+	}
+
+
 	public function save(){
 
 		$sql = new Sql();

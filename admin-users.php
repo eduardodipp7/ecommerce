@@ -1,5 +1,8 @@
 <?php
 
+use \Projeto\PageAdmin;
+use \Projeto\Model\User;
+
 //CAMADA DE USUARIOS 
 $app->get('/admin/users/', function(){
 
