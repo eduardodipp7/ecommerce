@@ -3,6 +3,7 @@
 use \Projeto\Page;
 use \Projeto\Model\Product;
 use \Projeto\Model\Category;
+use \Projeto\Model\Cart;
 
 
 $app->get('/', function() { //pega a rota que eu estou chamando e executa a função e cria a nova pagina
@@ -56,6 +57,33 @@ $app->get("/categories/:idcategory/", function($idcategory){
      'page'=>$page
 
 	]);
+});
+
+//CRIANDO ROTA PARA DETALHES DO PRODUTO NO SITE
+$app->get("/products/:desurl", function($desurl){
+
+	$product = new Product();
+	$product->getFromURL($desurl);
+
+	$page = new Page();
+
+	$page->setTpl("product-detail", [
+    
+    'product'=>$product->getValues(),
+    'categories'=>$product->getCategories()
+
+	]);
+});
+
+//CRIANDO ROTA PARA CARRINHO DE COMPRAS PRO SITE
+
+$app->get("/cart/", function(){
+
+	$cart = Cart::getFromSession();
+
+	$page = new Page();
+
+	$page->setTpl("cart");
 });
 
 ?>
