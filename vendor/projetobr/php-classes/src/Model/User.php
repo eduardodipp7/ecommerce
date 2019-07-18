@@ -27,8 +27,13 @@ class User extends Model{
 
 		if(
 
-            !isset($_SESSION[User::SESSION]) || !$_SESSION[User::SESSION] || !(int)$_SESSION[User::SESSION]["iduser"] > 0 
-		){
+            !isset($_SESSION[User::SESSION]) 
+            || 
+            !$_SESSION[User::SESSION] 
+            || 
+            !(int)$_SESSION[User::SESSION]["iduser"] > 0 
+		)
+		{
               //Não está logado
 			return false;
 		}else{
@@ -90,7 +95,7 @@ class User extends Model{
 
 	public static function verifyLogin($inadmin = true){
 
-		if(User::checkLogin($inadmin)){
+		if(!User::checkLogin($inadmin)){
 
 			header("Location: /admin/login/");
 			exit;
