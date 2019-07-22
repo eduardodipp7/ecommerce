@@ -54,7 +54,7 @@
                 <?php if( $errorRegister != '' ){ ?>
 
                 <div class="alert alert-danger">
-                    <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+                    <?php echo htmlspecialchars( $errorRegister, ENT_COMPAT, 'UTF-8', FALSE ); ?>
 
                 </div>
                 <?php } ?>
