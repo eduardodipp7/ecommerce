@@ -15,6 +15,7 @@ require_once("admin.php");
 require_once("admin-users.php");
 require_once("admin-categories.php");
 require_once("admin-products.php");
+require_once("admin-orders.php");
 
 //Nossa chamada para execução é a chave de inginição do carro, ele que executa tudo
 $app->run();
