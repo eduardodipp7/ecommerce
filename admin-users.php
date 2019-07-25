@@ -4,6 +4,46 @@ use \Projeto\PageAdmin;
 use \Projeto\Model\User;
 
 //CAMADA DE USUARIOS 
+
+$app->get("/admin/users/:iduser/password/", function($iduser){
+    User::verifyLogin();
+    $user = new User();
+    $user->get((int)$iduser);
+    $page = new PageAdmin();
+    $page->setTpl("users-password", [
+        'user'=>$user->getValues(),
+        'msgError'=>User::getError(),
+        'msgSuccess'=>User::getSuccess()
+    ]);
+});
+
+
+$app->post("/admin/users/:iduser/password/", function($iduser){
+    User::verifyLogin();
+    if (!isset($_POST['despassword']) || $_POST['despassword'] === '') {
+        User::setError("Preencha a nova senha.");
+        header("Location: /admin/users/$iduser/password/");
+        exit;
+    }
+    if (!isset($_POST['despassword-confirm']) || $_POST['despassword-confirm'] === '') {
+        User::setError("Preencha a confirmação nova senha.");
+        header("Location: /admin/users/$iduser/password/");
+        exit;
+    }
+    if ($_POST['despassword'] !== $_POST['despassword-confirm']) {
+        User::setError("As senhas devem ser iguais.");
+        header("Location: /admin/users/$iduser/password/");
+        exit;
+    }
+    $user = new User();
+    $user->get((int)$iduser);
+    $user->setPassword(User::getPasswordHash($_POST['despassword']));
+    User::setSuccess("Senha alterada com sucesso.");
+        header("Location: /admin/users/$iduser/password/");
+        exit;
+    
+});
+
 $app->get('/admin/users/', function(){
 
     //veirfica o login pra entrar na pagina
