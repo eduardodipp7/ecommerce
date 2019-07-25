@@ -513,13 +513,13 @@ $dadosboleto["endereco1"] = $order->getdesaddress() . " " .$order->getdesdistric
 $dadosboleto["endereco2"] = $order->getdescity(). " - " .$order->getdesstate(). " - " .$order->getdescountry(). " -  CEP: " . $order->getdeszipcode();
 
 // INFORMACOES PARA O CLIENTE
-$dadosboleto["demonstrativo1"] = "Pagamento de Compra na Loja Hcode E-commerce";
+$dadosboleto["demonstrativo1"] = "Pagamento de Compra na Loja PHOENIX SEMI-JOIAS E-commerce";
 $dadosboleto["demonstrativo2"] = "Taxa bancária - R$ 0,00";
 $dadosboleto["demonstrativo3"] = "";
 $dadosboleto["instrucoes1"] = "- Sr. Caixa, cobrar multa de 2% após o vencimento";
 $dadosboleto["instrucoes2"] = "- Receber até 10 dias após o vencimento";
-$dadosboleto["instrucoes3"] = "- Em caso de dúvidas entre em contato conosco: suporte@hcode.com.br";
-$dadosboleto["instrucoes4"] = "&nbsp; Emitido pelo sistema Projeto Loja Hcode E-commerce - www.hcode.com.br";
+$dadosboleto["instrucoes3"] = "- Em caso de dúvidas entre em contato conosco: suporte@phoenixsemijoias.com.br";
+$dadosboleto["instrucoes4"] = "&nbsp; Emitido pelo sistema Projeto Loja PHOENIX SEMI-JOIAS E-commerce - www.semijoiaspassofundo.com.br";
 
 // DADOS OPCIONAIS DE ACORDO COM O BANCO OU CLIENTE
 $dadosboleto["quantidade"] = "";
